@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Test Amazon Product Selection">
+
+  <parameter name="rcHost" value="localhost"/>
+  <parameter name="rcPort" value="4444"/>
+  <parameter name="targetHostUrl" value="https://www.amazon.com/"/>
+  <parameter name="debugging" value="true"/>
+  <parameter name="browser" value="chrome"/>
+  <parameter name="driverType" value="webdriver"/>
+  <parameter name="actionsLogging" value="true"/>
+  <parameter name="suit.init.context" value="false"/>
+
+  <listeners>
+    <listener class-name="com.persado.oss.quality.stevia.selenium.listeners.TestListener"/>
+    <listener class-name="org.uncommons.reportng.HTMLReporter"/>
+  </listeners>
+
+  <test name="Smoke test flow" preserve-order="true">
+    <classes>
+      <class name="com.ckon.tests.TestAddGiftCardToBasket"/>
+    </classes>
+  </test>
+</suite>
