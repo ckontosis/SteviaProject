@@ -1,6 +1,5 @@
 package com.ckon.tests;
 
-import com.ckon.actions.SelectThirdGiftCard;
 import com.ckon.pageObjects.AmazonGiftCardPage;
 import com.ckon.pageObjects.AmazonPrintAtHomeGiftCardPage;
 import com.ckon.pageObjects.AmazonShoppingCartPage;
@@ -14,18 +13,34 @@ import static org.springframework.test.util.AssertionErrors.assertEquals;
 public class TestAddGiftCardToBasket extends SteviaTestBase {
 
     @Autowired
-    protected SelectThirdGiftCard selectThirdGiftCard;
+    protected AmazonMainPage amazonHome;
+
+    @Autowired
+    protected AmazonGiftCardPage giftCardPage;
+
+    @Autowired
+    protected AmazonPrintAtHomeGiftCardPage printAtHomePage;
 
     @Autowired
     protected AmazonShoppingCartPage shoppingCartPage;
 
     protected String cardPrice;
     protected String cartSubtotal;
-    
-    @Test(description = "Should enter main page and then press Print at Home")
-    public void verifyPriceIsTheSame() throws InterruptedException {
-        cardPrice = selectThirdGiftCard.addGiftCardToBasket();
+
+    @BeforeTest
+    public void addGiftCardToBasket() {
+        amazonHome.pressDontChangeButton();
+        amazonHome.pressGiftCardButton();
+        giftCardPage.pressPrintAtHomeButton();
+        printAtHomePage.selectStandardDesign();
+        printAtHomePage.selectThirdCardDesign();
+        cardPrice = printAtHomePage.getCardPrice();
+        printAtHomePage.pressAddToCartButton();
         cartSubtotal = shoppingCartPage.getCartSubtotal();
+    }
+
+    @Test(description = "Should enter main page and then press Print at Home")
+    public void verifyPriceIsTheSame() {
         assertEquals("Card price does not match Shopping cart subtotal", cardPrice, cartSubtotal);
     }
 }

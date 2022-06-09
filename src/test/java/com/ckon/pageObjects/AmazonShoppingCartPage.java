@@ -5,7 +5,7 @@ import com.persado.oss.quality.stevia.selenium.core.WebComponent;
 public class AmazonShoppingCartPage extends WebComponent {
 
     public enum AmazonShoppingCartPageLocators {
-        CART_SUBTOTAL("//div[@id='sw-subtotal']/span[2]/span[1]/span[1]");
+        CART_SUBTOTAL("css=span.ewc-subtotal-amount span.a-size-base");
 
         private String myLocator;
 
@@ -16,6 +16,8 @@ public class AmazonShoppingCartPage extends WebComponent {
     }
 
     public String getCartSubtotal() {
-        return controller().getText(AmazonShoppingCartPageLocators.CART_SUBTOTAL.get().replaceAll("[^0-9]",""));
+        String subtotal = controller().getText(AmazonShoppingCartPageLocators.CART_SUBTOTAL.get());
+
+        return subtotal;
     }
 }
