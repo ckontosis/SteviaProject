@@ -1,5 +1,6 @@
 package com.ckon.tests;
 
+import com.ckon.actions.SelectThirdGiftCard;
 import com.ckon.pageObjects.AmazonGiftCardPage;
 import com.ckon.pageObjects.AmazonPrintAtHomeGiftCardPage;
 import com.ckon.pageObjects.AmazonShoppingCartPage;
@@ -13,13 +14,7 @@ import static org.springframework.test.util.AssertionErrors.assertEquals;
 public class TestAddGiftCardToBasket extends SteviaTestBase {
 
     @Autowired
-    protected AmazonMainPage amazonHome;
-
-    @Autowired
-    protected AmazonGiftCardPage giftCardPage;
-
-    @Autowired
-    protected AmazonPrintAtHomeGiftCardPage printAtHomePage;
+    protected SelectThirdGiftCard selectThirdGiftCard;
 
     @Autowired
     protected AmazonShoppingCartPage shoppingCartPage;
@@ -29,13 +24,7 @@ public class TestAddGiftCardToBasket extends SteviaTestBase {
 
     @BeforeTest
     public void addGiftCardToBasket() {
-        amazonHome.pressDontChangeButton();
-        amazonHome.pressGiftCardButton();
-        giftCardPage.pressPrintAtHomeButton();
-        printAtHomePage.selectStandardDesign();
-        printAtHomePage.selectThirdCardDesign();
-        cardPrice = printAtHomePage.getCardPrice();
-        printAtHomePage.pressAddToCartButton();
+        cardPrice = selectThirdGiftCard.addGiftCardToBasket();
         cartSubtotal = shoppingCartPage.getCartSubtotal();
     }
 

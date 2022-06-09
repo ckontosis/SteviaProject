@@ -19,15 +19,15 @@ public class SelectThirdGiftCard {
 
     protected String price;
 
-    public String addGiftCardToBasket() throws InterruptedException {
+    public String addGiftCardToBasket() {
+        mainPage.pressDontChangeButton();
         mainPage.pressGiftCardButton();
         giftCardPage.pressPrintAtHomeButton();
-        printAtHomePage.selectStandardDesigns();
-
+        printAtHomePage.selectStandardDesign();
 //        printAtHomePage.selectCardDesign(3);
         printAtHomePage.selectThirdCardDesign();
         price = printAtHomePage.getCardPrice();
-        printAtHomePage.clickAddToCartButton();
+        printAtHomePage.pressAddToCartButton();
 
         return price;
     }

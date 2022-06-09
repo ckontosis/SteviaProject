@@ -14,5 +14,6 @@
     <bean id="giftCardPage" class="com.ckon.pageObjects.AmazonGiftCardPage"/>
     <bean id="printAtHomePage" class="com.ckon.pageObjects.AmazonPrintAtHomeGiftCardPage"/>
     <bean id="shoppingCartPage" class="com.ckon.pageObjects.AmazonShoppingCartPage"/>
+    <bean id="selectThirdGiftCard" class="com.ckon.actions.SelectThirdGiftCard"/>
 
 </beans>
