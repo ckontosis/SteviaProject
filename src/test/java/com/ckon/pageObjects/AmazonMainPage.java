@@ -2,6 +2,10 @@ package com.ckon.pageObjects;
 
 import com.persado.oss.quality.stevia.selenium.core.WebComponent;
 
+/**
+ * Page object model for the Amazon Main Page
+ * @author Christos Kontosis
+ */
 public class AmazonMainPage extends WebComponent {
 
     public enum MainPageLocators {
@@ -15,8 +19,15 @@ public class AmazonMainPage extends WebComponent {
 
     }
 
+    /**
+     * Presses Gift Cards on the Navigation Bar that navigates to
+     * {@link com.ckon.pageObjects.AmazonGiftCardPage}
+     */
     public void pressGiftCardButton() { controller().press(MainPageLocators.GIFT_CARD_BUTTON.get()); }
 
+    /**
+     * Presses Don't Change button if the pop-up appears
+     */
     public void pressDontChangeButton() {
         boolean exists = !controller().isComponentNotPresent(MainPageLocators.DONT_CHANGE_LOCATION.get());
         if (exists) {

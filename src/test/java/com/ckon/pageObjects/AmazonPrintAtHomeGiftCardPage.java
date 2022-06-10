@@ -5,6 +5,10 @@ import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
+/**
+ * Page object model for the Amazon Print at Home Gift Card Page
+ * @author Christos Kontosis
+ */
 public class AmazonPrintAtHomeGiftCardPage extends WebComponent {
 
     public enum AmazonPrintAtHomeGiftCardPageLocators {
@@ -22,6 +26,9 @@ public class AmazonPrintAtHomeGiftCardPage extends WebComponent {
 
     }
 
+    /**
+     * Selects the Standard card design
+     */
     public void selectStandardDesign() {
         controller().press(AmazonPrintAtHomeGiftCardPageLocators.STANDARD_DESIGN.get());
     }
@@ -36,15 +43,28 @@ public class AmazonPrintAtHomeGiftCardPage extends WebComponent {
     //TODO
     public void selectCardDesign(int position) { getCardDesign(position).click(); }
 
+    /**
+     * Selects the third card design from the list
+     */
     public void selectThirdCardDesign() {
 
         controller().press(AmazonPrintAtHomeGiftCardPageLocators.THIRD_CARD.get());
     }
 
+    /**
+     * Presses Add to cart button that navigates to
+     * {@link com.ckon.pageObjects.AmazonShoppingCartPage}
+     *
+     */
     public void pressAddToCartButton() {
         controller().press(AmazonPrintAtHomeGiftCardPageLocators.ADD_TO_CART_BUTTON.get());
     }
 
+
+    /**
+     * Gets the price for the selected card
+     * @return the price of card as String
+     */
     public String getCardPrice() {
         String price = controller().getText(AmazonPrintAtHomeGiftCardPageLocators.CARD_PRICE.get());
 

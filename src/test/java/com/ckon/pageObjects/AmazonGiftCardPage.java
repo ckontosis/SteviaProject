@@ -2,6 +2,10 @@ package com.ckon.pageObjects;
 
 import com.persado.oss.quality.stevia.selenium.core.WebComponent;
 
+/**
+ * Page object model for the Amazon Gift Card Page
+ * @author Christos Kontosis
+ */
 public class AmazonGiftCardPage extends WebComponent {
 
     public enum MainPageLocators {
@@ -15,5 +19,9 @@ public class AmazonGiftCardPage extends WebComponent {
 
     }
 
+    /**
+     * Presses Gift Cards on the Navigation Bar that navigates to
+     * {@link com.ckon.pageObjects.AmazonPrintAtHomeGiftCardPage}
+     */
     public void pressPrintAtHomeButton() { controller().press(MainPageLocators.PRINT_AT_HOME_BUTTON.get()); }
 }
